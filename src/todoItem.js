@@ -15,6 +15,15 @@ class TodoItem extends Component {
     const { handleItemDelete, index } = this.props;
     handleItemDelete(index)
   }
+  // 组件从父组件接收参数
+  // 只要父组件的render函数被重新执行了，子组件的这个生命周期函数就会被执行
+  componentWillReceiveProps() {
+    console.log('todoItem componentWillReceiveProps')
+  }
+  // 组件将被移除页面前执行
+  componentWillUnmount() {
+    console.log('todoItem componentWillUnmount')
+  }
 }
 TodoItem.propTypes = {
   content: PropTypes.string,

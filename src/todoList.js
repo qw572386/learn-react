@@ -12,6 +12,10 @@ class TodoList extends Component {
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleDelete = this.handleDelete.bind(this)
     }
+    // 组件挂载之前自动执行
+    componentWillMount() {
+        console.log('componentWillMount');
+    }
     handleChange(e) {
         // this.setState({
         //     inputValue: e.target.value
@@ -58,6 +62,7 @@ class TodoList extends Component {
         })
     }
     render() {
+        console.log('render')
         return (
             <Fragment>
                 <div>
@@ -65,7 +70,8 @@ class TodoList extends Component {
                 </div>
                 <div>
                     <label htmlFor="todoListInput">请输入：</label>
-                    <input id="todoListInput" className="input" type="text" onChange={this.handleChange} value={this.state.inputValue}/>
+                    {/* <input id="todoListInput" className="input" type="text" onChange={this.handleChange} value={this.state.inputValue}/> */}
+                    <input id="todoListInput" className="input" type="text" ref={(input) => {this.input = input}} onChange={this.handleChange} value={this.state.inputValue}/>
                     <button onClick={this.handleSubmit}>提交</button>
                 </div>
                 <ul>
@@ -74,6 +80,24 @@ class TodoList extends Component {
             </Fragment>
             
         )
+    }
+    // 组件挂载页面后，自动执行
+    componentDidMount() {
+        console.log('componentDidMount')
+    }
+    // 组件更新前自动执行
+    shouldComponentUpdate() {
+        console.log('shouldComponentUpdate')
+        // return false; // 告诉组件页面不更新
+        return true; // 告诉组件页面需要更新
+    }
+    // 组件更新前自动执行，但在shouldComponentUpdate之后
+    // 如果shouldComponentUpdate返回true才执行， 返回false不执行
+    componentWillUpdate() {
+        console.log('componentWillUpdate')
+    }
+    componentWillReceiveProps() {
+        console.log('componentWillReceiveProps')
     }
 }
 export default TodoList
