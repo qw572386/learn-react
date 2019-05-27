@@ -57,6 +57,7 @@ class TodoList extends Component {
                          *<li key={index} onClick={this.handleDelete.bind(this, index)}>{item}</li>
                          */
                     }
+                    
                 </Fragment>
             )
         })
